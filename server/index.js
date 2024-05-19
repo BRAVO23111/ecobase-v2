@@ -17,6 +17,7 @@ app.use(
   })  
 );
 
+
 const db = mongoose.connect(process.env.MONGO_URI);
 
 try {
