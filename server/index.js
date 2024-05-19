@@ -14,7 +14,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: ["https://ecobase-v2.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
   })
