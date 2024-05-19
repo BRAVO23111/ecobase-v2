@@ -16,7 +16,6 @@ app.use(
     credentials : true
   })  
 );
-app.use(express.json())
 
 const db = mongoose.connect(process.env.MONGO_URI);
 
@@ -33,9 +32,7 @@ app.use("/profile", ProfileRouter);
 app.use("/initiative", initiativeRouter);
 app.use("/ecoAction", ecoActionRouter);
 
-app.get("/", (req, res) => {
-  res.json("hey");
-});
+
 
 app.listen(3000, (req, res) => {
   console.log("server at 3000");
