@@ -14,22 +14,21 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["https://ecobase-v2.vercel.app"],
+    origin: ["https://ecobase-v2.vercel.app"], // Allow your Vercel app
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
   })
 );
+
 app.use(express.json());
 
 const db = mongoose.connect(process.env.MONGO_URI);
 
-try {
-  if (db) {
-    console.log("database connected");
-  }
-} catch (error) {
-  console.log(error);
-}
+db.then(() => {
+  console.log("Database connected");
+}).catch((error) => {
+  console.error("Database connection error:", error);
+});
 
 app.use("/auth", userRouter);
 app.use("/profile", ProfileRouter);
@@ -46,5 +45,5 @@ app.get("*", (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log("server at 3000");
+  console.log("Server running on port 3000");
 });
