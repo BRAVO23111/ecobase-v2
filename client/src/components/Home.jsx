@@ -94,7 +94,7 @@ const Home = () => {
   const saveEditedInitiative = async () => {
     try {
       await axios.put(
-        `http://localhost:3000/initiative/${editedInitiative._id}`,
+        `https://ecobase-v2.onrender.com/initiative/${editedInitiative._id}`,
         {
           name: editedName,
           description: editedDescription,
